@@ -1,0 +1,324 @@
+body{
+    background-color: #42393b;
+    font-size: 12px;
+}
+.container{
+    width: 831px;
+    margin: 0 auto;
+}
+.two_column{
+    width: 363px;
+    float: left;
+}
+.two_column.first{
+    margin-right: 30px;
+}
+.menu_top{
+    background: #FFF url(../images/tb_top_bg.jpg) no-repeat 0 top;
+    padding: 130px 30px 0;
+}
+.menu_top h5, .others_top h5, .orderwrap h5{
+    color: #821d11;
+    font: 18px "Microsoft yahei";
+    margin-bottom: 10px;
+    text-align: left;
+}
+.end_time{
+    color: #821d11;
+    font: 18px "Microsoft yahei";
+    margin-bottom: 10px;
+}
+.menu_top li{
+    float: left;
+    margin: 0 10px 10px;
+}
+.menu_bt{
+    height: 39px;
+    width: 363px;
+    background: url(../images/left_menu_bg.png) no-repeat 0 0;
+    margin-bottom: 30px;
+}
+.others_bt{
+    height: 24px;
+    width: 363px;
+    background: url(../images/menu_bbg.jpg) no-repeat 0 0;
+}
+.others_top{
+    background: #FFF url(../images/menu_tbg.jpg) no-repeat 0 0;
+    padding: 50px 20px 10px;
+}
+.others_top table{
+    width: 100%;
+    text-align: center;
+}
+.td_name{
+    background-color: #efefef;
+}
+.td_fan{
+    background-color: #f5dddd;
+}
+.td_price{
+    background-color: #ddf1f5;
+}
+.td_pink{
+    background: url(../images/td_bg_pink.png) no-repeat 1px 0;
+}
+.td_blue{
+    background: url(../images/td_bg_blue.png) no-repeat 1px 0;
+}
+.others_top th{
+    line-height: 30px;
+    text-align: center;
+    color: #FFF;
+}
+.others_top td{
+    padding: 10px 0;
+    border-bottom: 1px solid #FFF;
+    border-right: 1px solid #FFF;
+    line-height: 20px;
+}
+a.eatsame{
+    color: #FFF;
+    background: url(../images/btn1_bg.png) no-repeat 0 0;
+    width: 85px;
+    height: 30px;
+    display: block;
+    line-height: 30px;
+    margin-left: 10px;
+}
+a.eatsame:hover{
+    background-position: 0 -33px;
+}
+.two_column.second{
+    background: url(../images/operate_bg.png) no-repeat 0 0;
+    width: 438px;
+}
+.end_time{
+    padding: 20px 0 0 20px;
+    height: 64px;
+    line-height: 64px;
+}
+.timewrap{
+    margin-left: 30px;
+    color: #36302f;
+}
+.orderwrap{
+    position: relative;
+    padding: 20px 30px;
+    height: 510px;
+}
+.labels{
+    position: absolute;
+    top: 82px;
+    left: 30px;
+    line-height: 45px;
+    font-size: 14px;
+}
+.order_btn{
+    background: url(../images/order_btn.png) no-repeat 0 0!important;
+    width: 136px;
+    height: 58px;
+    position: absolute;
+    top: 350px;
+    left: 80px;
+    cursor: pointer;
+    text-indent: -55555px;
+}
+.order_btn:hover{
+    background-position: 0 -58px!important;
+}
+.name_field, .cai_field, .price_field, .quantity_field, .total_field{
+    position: absolute;
+    background: none;
+    border: none;
+    height: 30px;
+}
+.name_field{
+    top: 90px;
+    left: 90px;
+    width: 85px;
+}
+.cai_field{
+    width: 150px;
+    top: 137px;
+    left: 105px;
+}
+.price_field{
+    width: 60px;
+    top: 180px;
+    left: 85px;
+    height: 30px;
+}
+.quantity_field{
+    width: 25px;
+    top: 225px;
+    left: 110px;
+    height: 30px;
+    text-align: center;
+}
+.total_field{
+    top: 270px;
+    left: 85px;
+    width: 70px;
+}
+input[type="submit"]{
+    background: none;
+    border: none;
+}
+
+
+
+
+/* background page */
+
+
+.plus_btn, .minus_btn{
+    background-image: url(../images/plus_minus.png);
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    cursor: pointer;
+    top: 230px;
+}
+.minus_btn{
+    left: 80px;
+    background-position: 0 -20px;
+}
+.plus_btn{
+    left: 150px;
+    background-position: 0 0;
+}
+.minus_btn:hover{
+    background-position: -19px -20px;
+}
+.plus_btn:hover{
+    background-position: -19px 0;
+}
+.wrap{
+    width: 521px;
+    margin: 0 auto;
+}
+.menu {
+    background:#FFF  url(../images/bg/body_bg.jpg) no-repeat 0 0;
+    padding: 130px 50px 0;
+}
+.menu h5{
+    font: 18px "microsoft yahei";
+    color: #821d11;
+    margin-bottom: 20px;
+}
+.menu_btbg{
+    width: 521px;
+    height: 58px;
+    background: url(../images/bg/menu_btbg.jpg) no-repeat 0 0;
+}
+.menulist{
+    overflow: visible;
+    width: 298px;
+    float: left;
+}
+.menulist li{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 129px;
+    position: relative;
+}
+.uploadbtn{
+    float: left;
+}
+.removebtn{
+    background: url(../images/bg/delet_ico.png) no-repeat 0 0;
+    position: absolute;
+    width: 23px;
+    height: 22px;
+    top: -11px;
+    right: -10px;
+}
+.bgtimewrap{
+    background: url(../images/bg/time_wrap.png) no-repeat 0 0;
+    width: 498px;
+    height: 24px;
+    padding: 32px 30px;
+    position: relative;
+    font: 18px "Microsoft yahei";
+    color: #821d11;
+}
+.timebg{
+    position: absolute;
+    top: 30px;
+    left: 110px;
+    background: url(../images/bg/time_bg.png) no-repeat 0 0;
+    width: 112px;
+    height: 32px;
+}
+.timebg input{
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    color: #FFF;
+    font-size: 18px;
+}
+.hours{
+    margin-left: 10px;
+}
+.mimute{
+    margin-left: 30px;
+}
+.tablewrap{
+    background: #FFF url(../images/bg/bt_blockbg.jpg) no-repeat 0 0;
+    padding: 40px 40px;
+}
+.table_bg{
+    background: url(../images/bg/bt_blockbtbg.jpg) no-repeat 0 0;
+    width: 521px;
+    height: 51px;
+}
+.tablewrap table{
+    width: 100%;
+    text-align: center;
+}
+.tablewrap table th{
+    text-align: center;
+    height: 30px;
+    color: #FFF;
+}
+.tablewrap table td{
+    padding: 5px 0;
+    border-right: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+}
+.tdblue_big{
+    background: url(../images/bg/blue_bg.png) no-repeat 0 0;
+}
+.td_green{
+    background-color: #ddf5de;
+}
+.td_bluec{
+    background-color: #ddf1f5;
+}
+.td_lightred{
+    background-color: #f5dddd;
+}
+.totalwrap{
+    font: 18px "microsoft yahei";
+    color: #821d11;
+    float: right;
+    margin-top: 20px;
+}
+.tablewrap tr:hover td{
+    opacity: 0.7;
+}
+.updatebtn{
+    position: absolute;
+    display: block;
+    background: url(../images/bg/btns.png) 0 -56px no-repeat;
+    width: 81px;
+    height: 36px;
+    top: 28px;
+    left: 390px;
+}
+.updatebtn:hover{
+    background-position: -80px -56px;
+}
