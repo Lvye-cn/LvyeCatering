@@ -1,3 +1,45 @@
+<?php
+require_once('./mysqlConn.php');
+getCon();
+
+// Report simple running errors
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+$name = $_POST['name'];
+$eatwhat = $_POST['eat'];
+$price = $_POST['price'];
+$count = $_POST['count'];
+
+if ($name) {
+    if (isAlreadyOrder($name)) {
+        echo "<script>alert('您今天已经下过单啦～')</script>";
+    }else{
+        insertOrder($name, $eatwhat, $price, $count);
+    }
+
+    setcookie('name', $name, time() + (10 * 365 * 24 * 60 * 60));
+}
+
+function insertOrder($name, $eatwhat, $price, $count)
+{
+    $sql = "INSERT INTO lvyeorder (name, eatwhat, price, count)
+        VALUES ('" . $name . "', '" . $eatwhat . "', '" . $price . "', '".$count."'); ";
+//    echo $sql;
+    if (!mysql_query($sql)) {
+        die('Error: ' . mysql_error());
+    }
+
+    echo "<script>alert('下单成功')</script>";
+}
+
+function isAlreadyOrder($name)
+{
+    $sql = "select count(*) from lvyeorder where name ='" . $name . "' and DATE( TIME ) = curdate()";
+    $result = mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    return $row[0];
+}
+?>
 <!doctype html>
 <!--[if lte IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
@@ -41,15 +83,14 @@
                 <div class="menu_top clearfix">
                     <h5>菜单</h5>
                     <ul>
-                        <li>
-                            <a href="images/menu_img.jpg" data-lightbox="menu" target="_blank"><img src="images/menu_img.jpg" height="-1" width="-1" alt="" title=""></a>
-                        </li>
-                        <li>
-                            <a href="images/menu_img.jpg" data-lightbox="menu" target="_blank"><img src="images/menu_img.jpg" height="-1" width="-1" alt="" title=""></a>
-                        </li>
-                        <li>
-                            <a href="images/menu_img.jpg" data-lightbox="menu" target="_blank"><img src="images/menu_img.jpg" height="-1" width="-1" alt="" title=""></a>
-                        </li>
+                        <?php
+                        $result = mysql_query("SELECT * FROM menu");
+
+                        while ($row = mysql_fetch_array($result)) {
+                            echo "<li>
+                                <a href=\"menus/".$row['name']."\" data-lightbox=\"menu\" target=\"_blank\"><img src=\"menus/".$row['name']."\" height=\"100\" width=\"100\" alt=\"\" title=\"\"></a>
+                                </li>";
+                        }?>
                     </ul>
                 </div>
                 <div class="menu_bt"></div>
@@ -65,27 +106,31 @@
                             <th class="td_blue" width="58">单价</th>
                             <th></th>
                         </tr>
-                        <tr>
-                            <td class="td_name">
-                                <div class="single_line">金邦珠</div>
-                                <div class="single_line">张悦</div>
-                            </td>
-                            <td class="td_fan">
-                                宫保鸡丁饭
-                            </td>
-                            <td class="td_price">12</td>
-                            <td><a href="#" class="eatsame">我也吃这个</a></td>
-                        </tr>
-                        <tr>
-                            <td class="td_name">
-                                <div class="single_line">啄啄</div>
-                            </td>
-                            <td class="td_fan">
-                                小炒杏鲍菇
-                            </td>
-                            <td class="td_price">16</td>
-                            <td width="95"><a href="#" class="eatsame">我也吃这个</a></td>
-                        </tr>
+
+                        <?php
+
+                        $result = mysql_query("SELECT * FROM lvyeorder where DATE( TIME ) = curdate()");
+
+                        while ($row = mysql_fetch_array($result)) {
+                            echo " <tr><td class=\"td_name\"><div class=\"single_line\">";
+                            echo $row['name'] ;
+                            echo "</div></td>";
+
+                            echo "<td class=\"td_fan\">";
+                            echo $row['eatwhat'];
+                            echo "</td>";
+
+                            echo "<td class=\"td_price\">";
+                            echo $row['price'];
+                            echo "</td>";
+
+                            echo "<td><a href=\"#\" class=\"eatsame\">我也吃这个</a></td>";
+                            echo "</tr>";
+                        }
+
+                        ?>
+
+
                     </table>
                 </div>
                 <div class="others_bt"></div>
@@ -96,14 +141,18 @@
             <!-- end time area begin -->
                 <div class="end_time">
                     截止时间
-                    <span class="timewrap">11:10</span>
+                    <?php
+                    $result = mysql_query("SELECT * FROM deadtime");
+                    $row = mysql_fetch_array($result);
+                    ?>
+                    <span class="timewrap"><?php echo $row['hours'].":".$row['minute'] ?></span>
                 </div>
             <!-- end time area end -->
 
             <!-- order area begin -->
                 <div class="orderwrap">
                     <h5>订餐</h5>
-                    <form action="">
+                    <form action="./" method="post">
                         <div class="labels">
                             <div>姓名</div>
                             <div>我要吃</div>
@@ -111,10 +160,10 @@
                             <div>份数</div>
                             <div>总价</div>
                         </div>
-                        <input type="text" class="name_field">
-                        <input type="text" class="cai_field">
-                        <input type="text" name="" id="" class="price_field">
-                        <input type="text" maxlength="2" value="1" class="quantity_field">
+                        <input type="text" name="name" value="<?php echo $_COOKIE['name'] ?>" class="name_field">
+                        <input type="text" name="eat" class="cai_field">
+                        <input type="text" name="price" id="" class="price_field">
+                        <input type="text" name="count" maxlength="2" value="1" class="quantity_field">
                         <input type="text" class="total_field" readonly>
                         <input type="submit" class="order_btn" />
                         <div class="plus_btn"></div>
