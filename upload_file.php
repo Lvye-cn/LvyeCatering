@@ -11,9 +11,11 @@ getCon();
 
 if ((($_FILES["file"]["type"] == "image/gif")
         || ($_FILES["file"]["type"] == "image/jpeg")
+        || ($_FILES["file"]["type"] == "image/jpg")
+        || ($_FILES["file"]["type"] == "image/JPG")
         || ($_FILES["file"]["type"] == "image/png")
         || ($_FILES["file"]["type"] == "image/pjpeg"))
-    && ($_FILES["file"]["size"] < 20000000)
+    && ($_FILES["file"]["size"] < 80000000)
 ) {
     if ($_FILES["file"]["error"] > 0) {
         echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
